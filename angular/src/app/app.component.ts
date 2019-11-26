@@ -20,6 +20,7 @@ export class AppComponent {
   calendarEvents: EventInput[] = [
     { title: 'Event Now', start: new Date() }
   ];
+  eventLimit = 1;
 
   toggleVisible() {
     this.calendarVisible = !this.calendarVisible;
