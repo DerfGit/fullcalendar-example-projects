@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/popper.js/dist/popper.min.js"
+            ],
             "es5BrowserSupport": true,
             "preserveSymlinks": true
           },

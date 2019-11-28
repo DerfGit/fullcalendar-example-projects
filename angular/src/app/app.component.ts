@@ -3,7 +3,8 @@ import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction'; // for dateClick
+import interactionPlugin from '@fullcalendar/interaction';
+import tippy from 'tippy.js';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +14,16 @@ import interactionPlugin from '@fullcalendar/interaction'; // for dateClick
 export class AppComponent {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent; // the #calendar in the template
+  pop = null;
+  selectEvent = null;
 
   calendarVisible = true;
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
   calendarWeekends = true;
   calendarEvents: EventInput[] = [
-    { title: 'Event Now', start: new Date() }
+    { title: 'event 1', date: '2019-11-29' },
+    { title: 'event 2', date: '2019-11-28' }
   ];
-  eventLimit = 1;
 
   toggleVisible() {
     this.calendarVisible = !this.calendarVisible;
@@ -35,14 +38,11 @@ export class AppComponent {
     calendarApi.gotoDate('2000-01-01'); // call a method on the Calendar object
   }
 
-  handleDateClick(arg) {
-    if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-      this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
-        title: 'New Event',
-        start: arg.date,
-        allDay: arg.allDay
-      })
-    }
+  handleDateClick({el, event, jsEvent, view }) {
+    this.selectEvent= event;
+    tippy(el, {
+      trigger: 'click',
+      content: document.getElementById('test')
+    });
   }
-
 }

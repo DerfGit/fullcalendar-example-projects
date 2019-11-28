@@ -17,12 +17,17 @@
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       }"
-      [eventLimit]="eventLimit"
       [plugins]="calendarPlugins"
       [weekends]="calendarWeekends"
       [events]="calendarEvents"
-      (dateClick)="handleDateClick($event)"
+      (eventClick)="handleDateClick($event)"
     ></full-calendar>
+  </div>
+
+  <div id="test">
+    <p>{{selectEvent?.start | date}}</p>
+    <br>
+    <p>{{selectEvent?.title}}</p>
   </div>
 
 </div>
