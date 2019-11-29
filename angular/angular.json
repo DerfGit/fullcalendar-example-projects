@@ -26,6 +26,7 @@
               "src/styles.scss"
             ],
             "scripts": [
+              "node_modules/@nebular/theme/styles/prebuilt/default.css",
               "node_modules/popper.js/dist/popper.min.js"
             ],
             "es5BrowserSupport": true,

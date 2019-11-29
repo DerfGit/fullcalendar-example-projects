@@ -11,6 +11,25 @@ import tippy from 'tippy.js';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+@Component({
+  selector: 'nb-popover-placements',
+  templateUrl: './popover-placements.component.html',
+  styles: [`
+    :host {
+      display: block;
+      margin: 4rem 0;
+    }
+
+    button {
+      margin: 1rem;
+    }
+  `],
+})
+export class PopoverPlacementsComponent {
+}
+
+
 export class AppComponent {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent; // the #calendar in the template
@@ -25,6 +44,7 @@ export class AppComponent {
     { title: 'event 2', date: '2019-11-28' }
   ];
 
+  
   toggleVisible() {
     this.calendarVisible = !this.calendarVisible;
   }
